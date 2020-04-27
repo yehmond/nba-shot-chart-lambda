@@ -1,0 +1,33 @@
+{
+  "name": "nba-shot-chart",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc -p .",
+    "watch": "tsc -p . -w",
+    "nodemon": "nodemon --watch '*.js' --exec yarn start",
+    "dev": "concurrently \"yarn watch\" \"yarn nodemon\"",
+    "start": "serverless offline start --httpPort 8000",
+    "postinstall": "yarn build",
+    "deploy": "yarn build && serverless deploy -s prod"
+  },
+  "dependencies": {
+    "apollo-server-lambda": "^2.12.0",
+    "apollo-server-plugin-base": "^0.7.1",
+    "dotenv": "^8.2.0",
+    "global": "^4.4.0",
+    "graphql": "^15.0.0",
+    "mongodb": "^3.5.6"
+  },
+  "devDependencies": {
+    "@types/graphql": "^14.5.0",
+    "@types/mongodb": "^3.5.14",
+    "concurrently": "^5.2.0",
+    "nodemon": "^2.0.3",
+    "serverless-dotenv-plugin": "^2.4.2",
+    "serverless-offline": "^6.1.4",
+    "ts-node": "^8.9.1",
+    "typescript": "^3.8.3"
+  }
+}

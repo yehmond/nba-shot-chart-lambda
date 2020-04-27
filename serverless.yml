@@ -1,0 +1,23 @@
+service: apollo-lambda
+plugins:
+  - serverless-dotenv-plugin
+  - serverless-offline
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: us-west-2
+functions:
+  graphql:
+    handler: dist/graphql.graphqlHandler
+    events:
+      - http:
+          path: graphql
+          method: post
+          cors: true
+      - http:
+          path: graphql
+          method: get
+          cors: true
+    environment:
+      NODE_ENV: ${env:NODE_ENV}
+      DATABASE_URL: ${env:DATABASE_URL}
